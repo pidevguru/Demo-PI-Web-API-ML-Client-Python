@@ -1,8 +1,8 @@
-Demo PI Web API client for Python
+Demo PI Web API ML (Machine learning) client for Python
 ===
 
 ## Overview
-This repository has the source code package of a sample application using the PI Web API client for Python. 
+This repository has the source code package of a sample application using the PI Web API ML client for Python. 
 
 ## Requirements
 
@@ -15,7 +15,7 @@ If the python package is hosted on Github, you can install directly from Github
 
 
 ```sh
-pip install pidevguru.piwebapi
+pip install pidevguru-piwebapi-ml
 ```
 
 
@@ -25,53 +25,6 @@ Install via [Setuptools](http://pypi.python.org/pypi/setuptools).
 
 ```sh
 python setup.py install --user
-```
-
-
-## Documentation
-
-All PI Web API server methods are mapped on this client. Please refer to [PI Web API help page](https://docs.aveva.com/bundle/pi-web-api-reference/page/help). 
-
-## Examples
-
-### Create an instance of the PI Web API top level object.
-
-#### Basic Authentication
-```python
-    from pidevguru.piwebapi.pi_web_api_client import PIWebApiClient
-    piwebapi = PIWebApiClient("https://webserver/piwebapi", verifySsl=True) 
-    piwebapi.set_basic_auth("username", "password")	
-``` 
-
-#### Kerberos Authentication
-```python
-    from pidevguru.piwebapi.pi_web_api_client import PIWebApiClient
-    piwebapi = PIWebApiClient("https://webserver/piwebapi", verifySsl=False)  
-	piwebapi.set_kerberos_auth()	
-``` 
-
-### Get the PI Data Archive WebId
-
-```python
-    dataServer = piwebapi.dataServer.get_by_path("\\\\PISRV1");
-```
-
-### Create a new PI Point
-
-```python
-    newPoint = PIPoint()
-    newPoint.name  = "SINUSOID_TEST"
-    newPoint.descriptor = "Test PI Point for Python PI Web API Client"
-    newPoint.point_class = "classic"
-    newPoint.point_type = "float32"
-    newPoint.future = False
-    res = piwebapi.dataServer.create_point_with_http_info(dataServer.web_id, newPoint);         
-```
-
-### Get PI Points WebIds
-
-```python
-    point1 = piwebapi.point.get_by_path("\\\\PISRV1\\sinusoid");
 ```
 
 
